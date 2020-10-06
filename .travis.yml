@@ -1,0 +1,8 @@
+language: csharp
+solution: Assignment5.sln
+install:
+  - nuget restore Assignment5.sln
+  - nuget install NUnit.Console -Version 3.9.0 -OutputDirectory testrunner
+script:
+  - msbuild /p:Configuration=Release Assignment5.sln
+  - mono ./testrunner/NUnit.ConsoleRunner.3.9.0/tools/nunit3-console.exe ./Assignment5/bin/Release/Assignment5.exe
